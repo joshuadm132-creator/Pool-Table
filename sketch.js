@@ -30,7 +30,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1200, 600);
+   // 1. Make the canvas responsive to the Iframe size
+    let canvas = createCanvas(windowWidth, windowHeight);
+    // 2. Attach the canvas to your wrapper div (Matches your Portfolio ID)
+  canvas.parent('p5-canvas-wrapper');
   background("grey");
   engine = Engine.create(); // create an engine
   engine.gravity.scale = -0.0
@@ -71,7 +74,9 @@ function setLineDash(list) {
   drawingContext.setLineDash(list);
 }
 
-
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
 
 
 
