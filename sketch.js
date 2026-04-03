@@ -39,7 +39,7 @@ function setup() {
         canvas.parent('p5-canvas-wrapper');
     } else {
         // Fallback for when you are viewing the project standalone
-        canvas = createCanvas(650, 500);
+       canvas = createCanvas(windowWidth, windowHeight);
     }
     
   background("grey");
