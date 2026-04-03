@@ -30,10 +30,18 @@ function preload() {
 }
 
 function setup() {
-   // 1. Make the canvas responsive to the Iframe size
-    let canvas = createCanvas(windowWidth, windowHeight);
-    // 2. Attach the canvas to your wrapper div (Matches your Portfolio ID)
-  canvas.parent('p5-canvas-wrapper');
+   let canvas; // Declare it once at the top
+    let wrapper = document.getElementById('p5-canvas-wrapper');
+
+    if (wrapper) {
+        // If the portfolio wrapper exists, go full-screen inside the iframe
+        canvas = createCanvas(windowWidth, windowHeight);
+        canvas.parent('p5-canvas-wrapper');
+    } else {
+        // Fallback for when you are viewing the project standalone
+        canvas = createCanvas(650, 500);
+    }
+    
   background("grey");
   engine = Engine.create(); // create an engine
   engine.gravity.scale = -0.0
