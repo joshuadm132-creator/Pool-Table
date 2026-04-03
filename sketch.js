@@ -75,8 +75,14 @@ function setLineDash(list) {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    let targetWidth = windowWidth;
+    let targetHeight = windowWidth * 0.5; // Keeps a 2:1 ratio
+
+    // If the height becomes too tall for the view area, scale based on height instead
+    if (targetHeight > windowHeight) {
+        targetHeight = windowHeight;
+        targetWidth = targetHeight * 2;
+    }
+
+    resizeCanvas(targetWidth, targetHeight);
 }
-
-
-
