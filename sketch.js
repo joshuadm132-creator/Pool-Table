@@ -35,11 +35,11 @@ function setup() {
 
     if (wrapper) {
         // If the portfolio wrapper exists, go full-screen inside the iframe
-        canvas = createCanvas(windowWidth, windowHeight);
+        canvas = createCanvas(windowWidth*0.9, windowHeight*0.9);
         canvas.parent('p5-canvas-wrapper');
     } else {
         // Fallback for when you are viewing the project standalone
-       canvas = createCanvas(windowWidth, windowHeight);
+        canvas = createCanvas(windowWidth*0.9, windowHeight*0.9);
     }
     
   background("grey");
