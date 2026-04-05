@@ -81,16 +81,18 @@ function mouseDragged(){
 function setLineDash(list) {
   drawingContext.setLineDash(list);
 }
-
 function windowResized() {
-    let targetWidth = windowWidth;
-    let targetHeight = windowWidth * 0.5; // Keeps a 2:1 ratio
-
-    // If the height becomes too tall for the view area, scale based on height instead
-    if (targetHeight > windowHeight) {
-        targetHeight = windowHeight;
-        targetWidth = targetHeight * 2;
+    const wrapper = document.getElementById('p5-canvas-wrapper');
+    if (wrapper) {
+        // Match the wrapper's dimensions precisely
+        resizeCanvas(wrapper.offsetWidth, wrapper.offsetHeight);
+    } else {
+        // Fallback for standalone viewing
+        resizeCanvas(windowWidth * 0.95, windowHeight * 0.6);
     }
-
-    resizeCanvas(targetWidth, targetHeight);
+    
+    // Crucial: Update your PoolTable scale/position if it's not relative
+    if (PT) {
+        PT.updatePosition(width / 2, height / 2); 
+    }
 }
